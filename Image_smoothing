@@ -1,0 +1,47 @@
+1. Kernel blurring filter:
+Custom kernels can be designed for specific smoothening needs. For instance, edge-preserving kernels have positive values at edge locations and can be used to sharpen or enhance edges while smoothening the rest of the image.
+
+Python code:
+import cv2 				# Import library cv2
+import numpy as np			# Import numeric Python
+image = cv2.imread('input.jpg')	        # Load an image
+kernel_size = 5			        # Define the kernel size for mean filtering
+# We create a kernel all values are 1 for mean filtering
+kernel = np.ones((kernel_size, kernel_size), np.float32) / (kernel_size * kernel_size)
+smoothed_image = cv2.filter2D(image, -1, kernel) 		       # Apply Mean filtering
+cv2.imwrite('mean_smoothed.jpg', smoothed_image) # Save the smoothed image
+cv2_imshow(smoothed_image) 	# This command is used for displaying the image in Google colaboratory.
+
+2. Gaussian filter
+The Gaussian filter applies a Gaussian distribution to assign weights to pixels in the neighborhood of each pixel. It creates a smooth transition between pixel values, effectively blurring the image. The blurring of the image depends on σ(Sigma). More the σ(Sigma)  the blurring of the image will be more. But creates a soft, gradual transition between pixel values, reducing sharp edges and noise.
+
+Python code:
+import cv2 				# Import library cv2
+image = cv2.imread('input.jpg') 	# Load an image
+smoothed_image = cv2.GaussianBlur(image, (5, 5), 0) # Apply Gaussian smoothing
+cv2.imwrite('gaussian_smoothed.jpg', smoothed_image) # Save the smoothed image
+cv2_imshow(smoothed_image) 	# This command is used for displaying the image in Google colaboratory.
+
+3. Bilateral Filter.
+The bilateral filter uses a kernel that combines spatial distance and intensity similarity to assign weights to pixels. This filter smoothens the image while preserving edges by considering both the spatial and intensity domains.
+
+Python code:
+# Import library cv2
+import cv2
+# Load an image
+image = cv2.imread('input.jpg')
+# Apply Bilateral filtering
+smoothed_image = cv2.bilateralFilter(image, 9, 75, 75)
+# Save the smoothed image
+cv2.imwrite('bilateral_smoothed.jpg', smoothed_image)
+cv2_imshow(smoothed_image) 	# This command is used for displaying the image in Google colaboratory.
+
+4. Median Filter
+The median filter replaces each pixel value with the median value of the pixel and its neighboring pixels within a defined window. It is effective at removing impulse noise (salt-and-pepper noise) while preserving edges.
+
+Python code:
+import cv2 				#Import library cv2
+image = cv2.imread('input.jpg')	# Load an image
+smoothed_image = cv2.medianBlur(image, 5) # Apply Median smoothing
+cv2.imwrite('median_smoothed.jpg', smoothed_image) # Save the smoothed image
+cv2_imshow(smoothed_image) 	#This command is used for displaying the image in Google colaboratory.
