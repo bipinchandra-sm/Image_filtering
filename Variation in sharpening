@@ -1,0 +1,44 @@
+The sharpening filter used: Laplacian Filter
+
+import cv2
+import numpy as np
+from matplotlib import pyplot as plt
+
+# Define the Laplacian filter for high-pass filtering
+def laplacian_filter(image):
+    kernel = np.array([[0, 1, 0],
+                       [1, -4, 1],
+                       [0, 1, 0]], np.float32)
+    return cv2.filter2D(image, -1, kernel)
+
+# Load the image in grayscale
+img = cv2.imread('HappyFish.jpg', cv2.IMREAD_GRAYSCALE)
+
+# Apply the Laplacian filter for high-pass filtering
+filtered_img = laplacian_filter(img)
+
+# Display the original and filtered images
+plt.subplot(1, 2, 1), plt.imshow(img, cmap='gray'), plt.title('Original')
+plt.xticks([]), plt.yticks([])
+plt.subplot(1, 2, 2), plt.imshow(filtered_img, cmap='gray'), plt.title('Laplacian Filter (High Pass)')
+plt.xticks([]), plt.yticks([])
+plt.show()
+
+
+# Define a different Laplacian filter for high-pass filtering
+def laplacian_filter_variation(image):
+    kernel = np.array([[0, 2, 0],
+                       [2, -8, 2],
+                       [0, 2, 0]], np.float32)
+    return cv2.filter2D(image, -1, kernel)
+
+
+# Apply the varied Laplacian filter for high-pass filtering
+filtered_img = laplacian_filter_variation(img)
+
+# Display the original and filtered images
+plt.subplot(1, 2, 1), plt.imshow(img, cmap='gray'), plt.title('Original')
+plt.xticks([]), plt.yticks([])
+plt.subplot(1, 2, 2), plt.imshow(filtered_img, cmap='gray'), plt.title('Varied Laplacian Filter (High Pass)')
+plt.xticks([]), plt.yticks([])
+plt.show()
