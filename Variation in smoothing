@@ -1,0 +1,61 @@
+import cv2
+import numpy as np
+from matplotlib import pyplot as plt
+
+# Define a function for box filter
+def box_filter(image,kernel_size):
+    kernel = np.ones((kernel_size,kernel_size), np.float32)/(kernel_size*kernel_size)
+    return cv2.filter2D(image, -1, kernel)
+
+# Reading the image
+img = cv2.imread('tulips.png',0)
+
+# Apply the filter on the image using box_filter function
+filtered_image = box_filter(img, 3)
+
+# Display the original and filtered image
+plt.subplot(1, 2, 1), plt.imshow(img, cmap='gray'), plt.title('Original')
+plt.xticks([]), plt.yticks([])
+plt.subplot(1, 2, 2), plt.imshow(filtered_image, cmap='gray'), plt.title('Box Filter')
+plt.xticks([]), plt.yticks([])
+plt.show()
+
+# Apply the filter on the image using box_filter function
+filtered_image = box_filter(img, 5)
+
+# Display the original and filtered image
+plt.subplot(1, 2, 1), plt.imshow(img, cmap='gray'), plt.title('Original')
+plt.xticks([]), plt.yticks([])
+plt.subplot(1, 2, 2), plt.imshow(filtered_image, cmap='gray'), plt.title('Box Filter')
+plt.xticks([]), plt.yticks([])
+plt.show()
+
+# Apply the filter on the image using box_filter function
+filtered_image = box_filter(img, 7)
+
+# Display the original and filtered image
+plt.subplot(1, 2, 1), plt.imshow(img, cmap='gray'), plt.title('Original')
+plt.xticks([]), plt.yticks([])
+plt.subplot(1, 2, 2), plt.imshow(filtered_image, cmap='gray'), plt.title('Box Filter')
+plt.xticks([]), plt.yticks([])
+plt.show()
+
+# Apply the filter on the image using box_filter function
+filtered_image = box_filter(img, 9)
+
+# Display the original and filtered image
+plt.subplot(1, 2, 1), plt.imshow(img, cmap='gray'), plt.title('Original')
+plt.xticks([]), plt.yticks([])
+plt.subplot(1, 2, 2), plt.imshow(filtered_image, cmap='gray'), plt.title('Box Filter')
+plt.xticks([]), plt.yticks([])
+plt.show()
+
+# Apply the filter on the image using box_filter function
+filtered_image = box_filter(img, 11)
+
+# Display the original and filtered image
+plt.subplot(1, 2, 1), plt.imshow(img, cmap='gray'), plt.title('Original')
+plt.xticks([]), plt.yticks([])
+plt.subplot(1, 2, 2), plt.imshow(filtered_image, cmap='gray'), plt.title('Box Filter')
+plt.xticks([]), plt.yticks([])
+plt.show()
