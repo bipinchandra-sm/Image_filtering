@@ -1,0 +1,4 @@
+Noise Reduction: To clean up images by removing digital noise that can arise during acquisition or transmission.
+Image Sharpening: To enhance the edges and fine details in an image, making it clearer.
+Edge Detection: To identify and locate sharp discontinuities in an image, which are typically associated with boundaries of objects, changes in material properties, or lighting changes.
+Feature Extraction: To extract specific structures or patterns from the image that are important for further analysis or processing, like in computer vision tasks.
