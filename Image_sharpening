@@ -1,0 +1,67 @@
+1. Laplace filter
+Python code:
+# Import cv2 Library
+import cv2
+# Load an image
+image = cv2.imread('input.jpg')
+# Apply the Laplacian operator for sharpening
+laplacian = cv2.Laplacian(image , cv2.CV_64F)
+sharpened_image = cv2.convertScaleAbs(laplacian)
+# Save the sharpened image
+cv2.imwrite('laplacian_sharpened.jpg', sharpened_image)
+
+Description: The Laplacian filter calculates the second derivative of the image to highlight rapid changes in pixel intensity, such as edges. It's often used in conjunction with the original image to enhance edges.
+
+2. Unsharp mask
+Python code:
+# Import cv2 Library
+import cv2
+# Load an image
+image = cv2.imread('input.jpg')
+# Apply Gaussian smoothing
+smoothed_image = cv2.GaussianBlur(image, (5, 5), 0)
+# Subtract the smoothed image from the original to create an unsharp mask
+mask = cv2.subtract(image, smoothed_image)
+# Add the mask to the original to sharpen the image
+sharpened_image = cv2.add(image, mask)
+# Save the sharpened image
+cv2.imwrite('unsharp_mask_sharpened.jpg', sharpened_image)
+
+Description: Unsharp masking involves creating a blurred version of the original image, subtracting it from the original, and then adding the result back to the original image. This process enhances edges and fine details.
+
+3. High boost filter 
+Python code:
+# Import cv2 Library
+import cv2
+import numpy as np
+# Load an image
+image = cv2.imread('input.jpg')
+# Apply Gaussian smoothing
+smoothed_image = cv2.GaussianBlur(image , (5, 5), 0)
+# Subtract the smoothed image from the original to create a high-pass filter
+high_pass_filter = image - smoothed_image
+# Add the high-pass filter back to the original to sharpen the image
+sharpened_image = image + high_pass_filter
+# Save the sharpened image
+cv2.imwrite('high_pass_sharpened.jpg', sharpened_image)
+
+Description: The basic high-boost filter enhances an image by adding a scaled version of its high-frequency components back to the original image. High-pass filters accentuate high-frequency components (edges and details) in an image by subtracting a low-pass (blurred) version of the image from the original.
+
+4. Enhancing with sharpening kernel:
+Python code:
+# Import cv2 Library
+import cv2
+# Import Numerical python
+import numpy as np
+# Load an image
+image = cv2.imread('input.jpg')
+# Define the sharpening kernel
+sharpening_kernel = np.array([[-1, -1, -1],
+                             		 [-1,  9, -1],
+                             		 [-1, -1, -1]])
+# Apply the sharpening kernel
+sharpened_image = cv2.filter2D(image, -1, sharpening_kernel)
+# Save the sharpened image
+cv2.imwrite('sharpening_kernel_sharpened.jpg', sharpened_image)
+
+Description: These custom-designed filters are specifically crafted to emphasize edges in an image. They have positive values at edge locations and negative values elsewhere.
